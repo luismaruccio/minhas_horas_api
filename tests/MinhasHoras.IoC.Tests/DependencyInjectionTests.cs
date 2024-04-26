@@ -13,13 +13,9 @@ namespace MinhasHoras.IoC.Tests
         public void RegisterServices_ValidConfiguration_RegistersServices()
         {
             Environment.SetEnvironmentVariable("MONGO_CONNECTION", "mongodb://localhost:27017");
+            Environment.SetEnvironmentVariable("SECRET_KEY", "my_secret_key");
             var services = new ServiceCollection();
-            var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(
-                [
-                    new KeyValuePair<string, string?>("SECRET_KEY", "my_secret_key")
-                ])
-                .Build();
+            var configuration = new ConfigurationBuilder().Build();
 
             services.RegisterServices(configuration);
 
@@ -34,13 +30,9 @@ namespace MinhasHoras.IoC.Tests
         public void RegisterServices_MissingMongoConnection_ThrowsException()
         {
             Environment.SetEnvironmentVariable("MONGO_CONNECTION", null);
+            Environment.SetEnvironmentVariable("SECRET_KEY", "my_secret_key");
             var services = new ServiceCollection();
-            var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(
-                [
-                    new KeyValuePair<string, string?>("SECRET_KEY", "my_secret_key")
-                ])
-                .Build();
+            var configuration = new ConfigurationBuilder().Build();
 
             Assert.Throws<ArgumentNullException>(() => services.RegisterServices(configuration));
         }
@@ -49,6 +41,7 @@ namespace MinhasHoras.IoC.Tests
         public void RegisterServices_MissingSecretKey_ThrowsException()
         {
             Environment.SetEnvironmentVariable("MONGO_CONNECTION", "mongodb://localhost:27017");
+            Environment.SetEnvironmentVariable("SECRET_KEY", null);
             var services = new ServiceCollection();
             var configuration = new ConfigurationBuilder().Build();
 
@@ -59,13 +52,9 @@ namespace MinhasHoras.IoC.Tests
         public void RegisterServices_ValidConfiguration_RegistersJwtService()
         {
             Environment.SetEnvironmentVariable("MONGO_CONNECTION", "mongodb://localhost:27017");
+            Environment.SetEnvironmentVariable("SECRET_KEY", "my_secret_key");
             var services = new ServiceCollection();
-            var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(
-                [
-                    new KeyValuePair<string, string?>("SECRET_KEY", "my_secret_key")
-                ])
-                .Build();
+            var configuration = new ConfigurationBuilder().Build();
 
             services.RegisterServices(configuration);
 

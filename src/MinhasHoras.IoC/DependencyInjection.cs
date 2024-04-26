@@ -19,7 +19,7 @@ namespace MinhasHoras.IoC
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
             var mongoConnection = Environment.GetEnvironmentVariable("MONGO_CONNECTION") ?? throw new ArgumentNullException(nameof(configuration), "MONGO_CONNECTION setting not found in configuration");
-            var secretKey = configuration["SECRET_KEY"] ?? throw new ArgumentNullException(nameof(configuration), "SECRET_KEY setting not found in configuration");
+            var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? throw new ArgumentNullException(nameof(configuration), "SECRET_KEY setting not found in configuration");
             services.Configure<MongoSettings>(options =>
             {
                 options.ConnectionString = mongoConnection;

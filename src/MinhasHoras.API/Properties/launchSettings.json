@@ -35,7 +35,8 @@
       "environmentVariables": {
         "ASPNETCORE_HTTPS_PORTS": "8081",
         "ASPNETCORE_HTTP_PORTS": "8080",
-        "MONGO_CONNECTION": "mongodb://minhashoras:W6LhQ7og@172.17.0.4:27017/"
+        "MONGO_CONNECTION": "mongodb://minhashoras:W6LhQ7og@172.17.0.4:27017/",
+        "SECRET_KEY": "3f756f75c285cb7822ed1f4808a0beac"
       },
       "httpPort": 8080,
       "sslPort": 4432,
