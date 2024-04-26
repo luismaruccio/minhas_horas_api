@@ -37,6 +37,8 @@
         "ASPNETCORE_HTTP_PORTS": "8080",
         "MONGO_CONNECTION": "mongodb://minhashoras:W6LhQ7og@172.17.0.4:27017/"
       },
+      "httpPort": 8080,
+      "sslPort": 4432,
       "publishAllPorts": true,
       "useSSL": true
     }
